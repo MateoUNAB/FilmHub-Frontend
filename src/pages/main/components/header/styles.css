@@ -1,0 +1,36 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+nav {
+  display: flex;
+  background-color: black;
+}
+
+.logo {
+  padding: 20px 30px;
+}
+
+.logo h1 {
+  color: white;
+}
+
+.links {
+  padding: 26px 20px;
+}
+
+.links :hover {
+  color: gray;
+}
+
+.links a {
+  text-decoration: none;
+  color: lightgray;
+  padding: 10px;
+}
+
+.search {
+  padding: 26px 20px;
+}
