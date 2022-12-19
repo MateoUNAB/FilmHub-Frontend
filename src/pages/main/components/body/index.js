@@ -1,33 +1,19 @@
+import { useEffect, useState } from "react";
 import { Card } from "./card";
 import "./styles.css";
 
 export const Body = () => {
-  const movies = [
-    {
-      name: "Test",
-      description: "this is a text",
-      image:
-        "https://i.pinimg.com/originals/dc/cc/84/dccc846959dffafa30a836dfacf9bab9.gif",
-    },
-    {
-      name: "Test",
-      description: "this is a text",
-      image:
-        "https://i.pinimg.com/originals/dc/cc/84/dccc846959dffafa30a836dfacf9bab9.gif",
-    },
-    {
-      name: "Test",
-      description: "this is a text",
-      image:
-        "https://i.pinimg.com/originals/dc/cc/84/dccc846959dffafa30a836dfacf9bab9.gif",
-    },
-    {
-      name: "Test",
-      description: "this is a text",
-      image:
-        "https://i.pinimg.com/originals/dc/cc/84/dccc846959dffafa30a836dfacf9bab9.gif",
-    },
-  ];
+  const [movies, setMovies] = useState([]);
+
+  useEffect(() => {
+    getMoviesAsync();
+  }, []);
+
+  const getMoviesAsync = async () => {
+    let response = await fetch("http://localhost:8080/api/movie");
+    response = await response.json();
+    setMovies(response);
+  };
 
   return (
     <div className="cards">
@@ -35,8 +21,14 @@ export const Body = () => {
         <Card
           key={idx}
           name={movie.name}
-          description={movie.description}
-          image={movie.image}
+          description={
+            !movie.description ? "No description" : movie.description
+          }
+          image={
+            !movie.image
+              ? "https://i.pinimg.com/originals/dc/cc/84/dccc846959dffafa30a836dfacf9bab9.gif"
+              : movie.image
+          }
         />
       ))}
     </div>
