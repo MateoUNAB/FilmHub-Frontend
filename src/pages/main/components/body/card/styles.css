@@ -6,6 +6,13 @@
   transition: 0.3s;
 }
 
+.card .btn {
+  padding: 10px;
+  text-decoration: none;
+  font-size: small;
+  color: black;
+}
+
 .card img {
   padding: 10px 10px 0px 10px;
   width: 100%;

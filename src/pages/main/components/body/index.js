@@ -29,6 +29,7 @@ export const Body = () => {
               ? "https://i.pinimg.com/originals/dc/cc/84/dccc846959dffafa30a836dfacf9bab9.gif"
               : movie.image
           }
+          id={movie.id}
         />
       ))}
     </div>

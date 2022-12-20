@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 import "./styles.css";
 
 export const Header = () => {
@@ -16,30 +17,34 @@ export const Header = () => {
 
   return (
     <nav>
+
       <div className="logo">
         <h1>FilmHub</h1>
       </div>
 
       <div className="links">
-        <a href="#">Home</a>
+        <Link to="/">Home</Link>
       </div>
 
       <div className="subGenres">
         <button className="genres">
           Genres <i className="fa fa-caret-down"></i>
         </button>
+
         <div className="subGenresContent">
           {genres.map((item, idx) => (
-            <a key={idx} href="#">
+            <Link key={idx} to={`/genre/${item.name}`}>
               {item.name}
-            </a>
+            </Link>
           ))}
         </div>
+
       </div>
 
       <div className="search">
         <input type="text"></input>
       </div>
+      
     </nav>
   );
 };
