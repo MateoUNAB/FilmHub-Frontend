@@ -18,6 +18,7 @@ export const Body = () => {
   return (
     <div className="cards">
       {movies.map((movie, idx) => (
+
         <Card
           key={idx}
           name={movie.name}
@@ -25,12 +26,13 @@ export const Body = () => {
             !movie.description ? "No description" : movie.description
           }
           image={
-            !movie.image
+            !movie.imageLink
               ? "https://i.pinimg.com/originals/dc/cc/84/dccc846959dffafa30a836dfacf9bab9.gif"
-              : movie.image
+              : movie.imageLink
           }
           id={movie.id}
         />
+        
       ))}
     </div>
   );

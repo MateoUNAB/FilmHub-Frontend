@@ -1,0 +1,32 @@
+.movieContainer {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+iframe {
+    width: 50%;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+}
+
+.details {
+    width: 50%;
+}
+
+.tittle {
+    margin: 20px;
+    display: flex;
+}
+
+.genresContainer {
+    margin: 14px 0px 0px 10px;
+    display: flex;
+    color: lightgray;   
+}
+
+.sinopsis {
+    margin: 20px;
+}
+
+.castContainer {
+    margin: 20px;
+}

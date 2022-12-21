@@ -6,17 +6,17 @@ export const Card = ({ id, image, name, description }) => {
 
     <div className="card"> 
 
-      <Link className="btn" to={`/movie/${id}`}>
-        MORE DETAILS
-      </Link>
-      <img src={image} alt="movieImage" />
+      <img src={image} alt="imageCard" />
 
-      <div className="container">
+      <div className="tittleCard">
         <h4>
           <b>{name}</b>
         </h4>
-        <p>{description}</p>
       </div>
+
+      <Link className="detailsLink" to={`/movie/${id}`}>
+        MORE DETAILS
+      </Link>
 
     </div>
     
