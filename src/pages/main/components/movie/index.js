@@ -4,10 +4,14 @@ import "./styles.css";
 
 export const Movie = () => {
   const params = useParams();
+  const [movieId, setMovieId] = useState('');
   const [movie, setMovie] = useState([]);
+  const [rating, setRating] = useState([]);
 
   useEffect(() => {
+    setMovieId(params.id);
     getMovie();
+    setRatingData();
   }, []);
 
   const getMovie = async () => {
@@ -15,6 +19,38 @@ export const Movie = () => {
     response = await response.json();
     setMovie(response);
   };
+
+  const sendRatingApi = async (rating) => {
+    const ratingDto = {
+      rating: rating,
+      clientId: "63a36df87c84153164b8aee1",
+      movieId: movieId
+    }
+
+    const requestData = {
+      method: 'POST',
+      body: JSON.stringify(ratingDto),
+      headers: {
+        "Content-type": "application/json"
+      }
+    }
+
+    let response = await fetch("http://localhost:8080/api/rating", requestData);
+    response = await response.json();
+  }
+
+  const setRatingData = () => {
+    const ratings = []
+    for (let index = 1; index <= 10; index++) {
+      ratings.push(index);
+    }
+    setRating(ratings)
+  }
+
+  const sendRating = async (event) => {
+    const {value} = event.target;
+    await sendRatingApi(value);
+  }
 
   return (
     <div className="movieContainer">
@@ -28,7 +64,7 @@ export const Movie = () => {
             : movie.trailerLink
         }
         title="YouTube video player"
-        frameborder="0"
+        frameBorder="0"
         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
         allowFullScreen
       ></iframe>
@@ -38,9 +74,11 @@ export const Movie = () => {
         <div className="tittle">
           <h1>{movie.name}</h1>
           <div className="genresContainer">
-          {movie.genreList && movie.genreList.length > 0
-            ? movie.genreList.map((genre, idx) => <p key={idx}>{genre.name}</p>)
-            : "undefined genre"}
+            {movie.genreList && movie.genreList.length > 0
+              ? movie.genreList.map((genre, idx) => (
+                  <p key={idx}>{genre.name}</p>
+                ))
+              : "undefined genre"}
           </div>
         </div>
 
@@ -56,6 +94,16 @@ export const Movie = () => {
                 </p>
               ))
             : "undefined cast"}
+        </div>
+
+        <div className="rating">
+        <p>Rate movie</p>
+        <select onChange={sendRating}>
+          <option defaultValue={'Sin calificar'} selected disabled>Sin calificar</option>
+          {rating.map((element, idx)=>(
+            <option key={idx}>{element}</option>
+          ))}
+        </select>
         </div>
 
       </div>
