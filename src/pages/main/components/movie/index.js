@@ -99,7 +99,7 @@ export const Movie = () => {
         <div className="rating">
         <p>Rate movie</p>
         <select onChange={sendRating}>
-          <option defaultValue={'Sin calificar'} selected disabled>Sin calificar</option>
+          <option defaultValue={'unrated'} selected disabled>unrated</option>
           {rating.map((element, idx)=>(
             <option key={idx}>{element}</option>
           ))}
