@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
+import { API_URL } from "../../../../util/Util";
 import "./styles.css";
 
 export const Movie = () => {
@@ -15,7 +16,7 @@ export const Movie = () => {
   }, []);
 
   const getMovie = async () => {
-    let response = await fetch("http://localhost:8080/api/movie/" + params.id);
+    let response = await fetch(API_URL + "movie/" + params.id);
     response = await response.json();
     setMovie(response);
   };
@@ -35,7 +36,7 @@ export const Movie = () => {
       }
     }
 
-    let response = await fetch("http://localhost:8080/api/rating", requestData);
+    let response = await fetch(API_URL + "rating/", requestData);
     response = await response.json();
   }
 

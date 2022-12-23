@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { API_URL } from "../../../../util/Util";
 import { Card } from "./card";
 import "./styles.css";
 
@@ -10,7 +11,7 @@ export const Body = () => {
   }, []);
 
   const getMoviesAsync = async () => {
-    let response = await fetch("http://localhost:8080/api/movie");
+    let response = await fetch(API_URL + "movie");
     response = await response.json();
     setMovies(response);
   };

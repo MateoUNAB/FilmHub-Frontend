@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import { API_URL } from "../../../../util/Util";
 import "./styles.css";
 
 export const Header = () => {
@@ -10,7 +11,7 @@ export const Header = () => {
   }, []);
 
   const getGenresAsync = async () => {
-    let response = await fetch("http://localhost:8080/api/genre");
+    let response = await fetch(API_URL + "genre");
     response = await response.json();
     setGenres(response);
   };

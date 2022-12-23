@@ -1,6 +1,7 @@
 import { useState } from "react";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
+import { API_URL } from "../../util/Util";
 import "./styles.css";
 
 export const SignUp = () => {
@@ -32,7 +33,7 @@ export const SignUp = () => {
         "Content-type": "application/json",
       },
     };
-    let response = await fetch("http://localhost:8080/api/client", requestData);
+    let response = await fetch(API_URL + "client", requestData);
     response = await response.json();
     return response;
   };
